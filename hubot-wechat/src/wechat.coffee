@@ -34,35 +34,7 @@ class Wechat extends Adapter
     user = envelope.user
     message = envelope.message
 
-    xml = XmlBuilder.create 'xml'
-    xml.ele 'ToUserName': {"#cdata" : user.name}
-    xml.ele 'FromUserName': {"#cdata" : 'ziggear'}
-
-    seconds = new Date().getTime() / 1000;
-    xml.ele 'CreateTime', parseInt(seconds).toString()
-
-    # Check if message contains image urls.
-    pattern = /http(s?):\/\/.*?\.(png|jpg|jpeg|gif)/i
-    match = data.match pattern
-    if match
-        url = "http://#{@settings.hostname}#{@settings.media_path}/#{encodeURIComponent match[0]}"
-        xml.ele 'MsgType', 'news'
-        xml.ele 'ArticleCount', '1'
-        item = xml.ele('Articles').ele('item')
-        item.ele 'PicUrl', url
-        item.ele 'Url', url
-        item.ele 'Title', ''
-        item.ele 'Description', data
-    else
-        xml.ele 'MsgType': {"#cdata" : 'text' }
-        xml.ele 'Content': {"#cdata" : data }
-
-    xml.end { pretty: false }
-    console.log xml.toString 'utf8'
-    reply = '<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[fromUser]]></FromUserName><CreateTime>12345678</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[test]]></Content></xml>'
-    #message.extra.end xml.toString 'utf8'
-    message.extra.set('Content-Type', 'text/xml')
-    message.extra.end reply
+    message.extra_res.reply data
 
   reply: (envelope, strings...) ->
     @robot.logger.info "Reply"
@@ -85,13 +57,12 @@ class Wechat extends Adapter
     @express = Express()
     # @express.use(bodyParser.urlencoded({ extended: false, type: 'text/xml' }))
     @express.use '/wechat', wechat('james_is_god', (req, res, next) ->
-        console.log req
-        content = req.weixin
-        user = new User 1001, name: 'Sample User'
-        message = new TextMessage user, content, 'MSG-001'
-        message.res = res
+        # console.log req
+        # content = req.weixin
+        user = new User 1001, name: req.weixin['FromUserName']
+        message = new TextMessage user, req.weixin['Content'], req.weixin['MsgId']
+        message.extra_res = res
         @robot.receive message
-        #res.reply 'hehe'
     )
 
     @express.listen @settings.port
