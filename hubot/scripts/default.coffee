@@ -24,7 +24,7 @@ module.exports = (robot) ->
 	robot.hear /([你是|你算|算|这是]*)人工智能(吗|呢)/i, (res) ->
 		res.send (res.random imChatBot)
 
-	robot.hear /^你是(谁|什么|机器人吗)$/i, (res) ->
+	robot.hear /你是(谁|什么|机器人吗)/i, (res) ->
 		res.send "我叫James，是聊天机器人"
 
 	robot.hear /([你]*)在(干嘛|做什么|搞(咩|乜|灭|毛|毛线|什么|啥))([啊|呢|呀]*)/i, (res) ->
@@ -61,6 +61,8 @@ module.exports = (robot) ->
 	robot.hear /^好了$/i, (res) ->
 		res.send (res.random hahaWords) + "，好了就好"
 
+	robot.hear /吃什么/i, (res) ->
+	    res.send '外卖吧'
 
 
 
