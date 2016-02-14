@@ -58,7 +58,7 @@ class Wechat extends Adapter
 
     xml.end { pretty: false }
     console.log xml.toString 'utf8'
-    reply = '<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[fromUser]]></FromUserName><CreateTime>12345678</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好]]></Contt></xml>'
+    reply = '<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[fromUser]]></FromUserName><CreateTime>12345678</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[test]]></Content></xml>'
     #message.extra.end xml.toString 'utf8'
     message.extra.set('Content-Type', 'text/xml')
     message.extra.end reply
