@@ -70,6 +70,8 @@ module.exports = (robot) ->
 	robot.hear /^([陈]*)新闻$/i, (res) ->
 	    res.send '是我妈妈'
 
+	robot.hear /^你从哪里来$/i, (res) ->
+	    res.send 'M78星云还是泰伯坦星球呢？让我想想'
 
 
 		
