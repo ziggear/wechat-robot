@@ -64,6 +64,9 @@ module.exports = (robot) ->
 	robot.hear /吃什么/i, (res) ->
 	    res.send '外卖吧'
 
+	robot.hear /^([陈]*)新闻$/i, (res) ->
+	    res.send '是我妈妈'
+
 
 
 		
