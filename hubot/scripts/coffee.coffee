@@ -1,5 +1,11 @@
 # coffee.coffee
 
+coffeeHello = [
+				'我有收录咖啡知识哦，不怕你考我',
+				'我对咖啡还算了解，因为我爹喜欢',
+				'我还不能点咖啡，但是可以向你介绍一写咖啡的知识'
+]
+
 coffeeShops = [
 				'星巴克做得很专业，就是烘焙过重了有的人喝了会心悸', 
 				'Costa一般般吧味道有点淡', '雕刻时光只能算一般，但是他们的咖啡培训做得不错',
@@ -24,7 +30,7 @@ starBucks = [
 
 module.exports = (robot) ->
 	robot.hear /^咖啡$/i, (res) ->
-	    res.send '我有收录咖啡知识哦，不怕你考我'
+	    res.send (res.random coffeeHello)
 
 	robot.hear /^星巴克$/i, (res) ->
 		res.send (res.random starBucks)
@@ -32,7 +38,7 @@ module.exports = (robot) ->
 	robot.hear /^阿拉比卡$/i, (res) ->
 		res.send '一种咖啡豆啊'
 
-	robot.hear /什么咖啡好喝|咖啡馆|都有哪些咖啡馆呢/i, (res) ->
+	robot.hear /什么咖啡好喝|咖啡馆|都有哪些咖啡馆呢|咖啡店/i, (res) ->
 		res.send (res.random coffeeShops)
 
 	robot.hear /咖啡豆|什么咖啡豆比较好/i, (res) ->

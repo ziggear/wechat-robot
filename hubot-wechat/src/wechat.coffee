@@ -35,6 +35,7 @@ class Wechat extends Adapter
     message = envelope.message
 
     message.extra_res.reply data
+    message.sent = true
 
   reply: (envelope, strings...) ->
     @robot.logger.info "Reply"
@@ -64,7 +65,13 @@ class Wechat extends Adapter
         user = new User 1001, name: req.weixin['FromUserName']
         message = new TextMessage user, req.weixin['Content'], req.weixin['MsgId']
         message.extra_res = res
+        message.sent = false
         robot.receive message
+
+        setTimeout (() ->
+            console.log 'hello'
+        , 3000)
+
     )
 
     @express.listen @settings.port
