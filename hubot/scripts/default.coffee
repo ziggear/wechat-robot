@@ -18,6 +18,9 @@ module.exports = (robot) ->
 	robot.hear /^喊爹$/i, (res) ->
 		res.send "爹"
 
+	robot.hear /^章颢(在吗*)$/i, (res) ->
+		res.send "你找我爹做什么"
+
 	robot.hear /叫爸爸|([你]*)爸爸是谁/i, (res) ->
 		res.send "我爸爸是ziggear"
 
