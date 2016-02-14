@@ -14,7 +14,8 @@
     "express": "4.13.x",
     "body-parser": "1.15.x",
     "xmlbuilder": "4.2.x",
-    "xml2js": "*"
+    "xml2js": "*",
+    "wechat": "*"
   },
 
   "peerDependencies": {
