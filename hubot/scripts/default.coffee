@@ -15,6 +15,9 @@ noMeaning = ['啊', '呢', '呀', '哇', '啦']
 hahaWords = ['嗯嗯', '就是就是', '哈哈', '嘿嘿', '是吗', '喔']
 
 module.exports = (robot) ->
+	robot.hear /^timeout$/i, (res) ->
+		res.send "抱歉我现在不会回答，可能明天就会了哟"
+
 	robot.hear /^喊爹$/i, (res) ->
 		res.send "爹"
 
