@@ -73,6 +73,8 @@ class Wechat extends Adapter
             if message.sent is false
                 # console.log 'not sent'
                 message = new TextMessage user, 'timeout', req.weixin['MsgId']
+                message.extra_res = res
+                message.sent = false
                 robot.receive message
             else
                 # message sent
