@@ -90,7 +90,7 @@ class Wechat extends Adapter
         timestamp = parsed['query']['timestamp']
         nonce     = parsed['query']['nonce']
         echostr   = parsed['query']['echostr']
-        token     = 'no_token'
+        token     = 'james_is_god'
 
         shasum = Crypto.createHash 'sha1'
         shasum.update [token, timestamp, nonce].sort().join('')
