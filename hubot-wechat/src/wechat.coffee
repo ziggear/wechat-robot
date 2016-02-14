@@ -34,11 +34,11 @@ class Wechat extends Adapter
     message = envelope.message
 
     xml = XmlBuilder.create 'xml'
-    xml.ele 'ToUserName', user.id
-    xml.ele 'FromUserName', message.extra.to
+    xml.ele 'ToUserName': {"#cdata" : user.name}
+    xml.ele 'FromUserName': {"#cdata" : 'ziggear'}
 
     seconds = new Date().getTime() / 1000;
-    xml.ele 'CreateTime', seconds.toString()
+    xml.ele 'CreateTime', parseInt(seconds).toString()
 
     # Check if message contains image urls.
     pattern = /http(s?):\/\/.*?\.(png|jpg|jpeg|gif)/i
@@ -53,12 +53,15 @@ class Wechat extends Adapter
         item.ele 'Title', ''
         item.ele 'Description', data
     else
-        xml.ele 'Content', data
-        xml.ele 'MsgType', 'text'
+        xml.ele 'MsgType': {"#cdata" : 'text' }
+        xml.ele 'Content': {"#cdata" : data }
 
-    xml.end { pretty: true }
-
-    message.extra.end xml.toString 'utf8'
+    xml.end { pretty: false }
+    console.log xml.toString 'utf8'
+    reply = '<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[fromUser]]></FromUserName><CreateTime>12345678</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好]]></Contt></xml>'
+    #message.extra.end xml.toString 'utf8'
+    message.extra.set('Content-Type', 'text/xml')
+    message.extra.end reply
 
   reply: (envelope, strings...) ->
     @robot.logger.info "Reply"
@@ -79,7 +82,7 @@ class Wechat extends Adapter
     # @robot.receive message
 
     @express = Express()
-    @express.use(bodyParser.urlencoded({ extended: false }))
+    @express.use(bodyParser.urlencoded({ extended: false, type: 'text/xml' }))
 
     # validate by wechat
     @express.get @settings.path, (req, res) =>
@@ -112,12 +115,13 @@ class Wechat extends Adapter
         robot = @robot
         # parse raw xml from bodyParser
         xml_body = null
+        # console.log req.body
         for key of req.body
             xml_body = key
         
         parseString xml_body, (err, result) ->
             # console.dir result
-            from = result['xml']['FromUserName']
+            from = result['xml']['FromUserName'].toString()
             text_content = result['xml']['Content']
             to = result['xml']['MsgId']
         # console.log from + ", " + content
