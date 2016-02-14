@@ -61,6 +61,9 @@ module.exports = (robot) ->
 	robot.hear /^什么$/i, (res) ->
 		res.send "没什么"
 
+	robot.hear /^是吗$/i, (res) ->
+		res.send "是的呢"
+
 	robot.hear /^好了$/i, (res) ->
 		res.send (res.random hahaWords) + "，好了就好"
 
