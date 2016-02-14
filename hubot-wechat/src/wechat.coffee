@@ -78,15 +78,20 @@ class Wechat extends Adapter
     @validate()
 
     # start up test
-    # user = new User 1001, name: 'Sample User'
+    user = new User 1001, name: 'Sample User'
     # message = new TextMessage user, 'test', 'MSG-001'
     # @robot.receive message
 
     @express = Express()
     # @express.use(bodyParser.urlencoded({ extended: false, type: 'text/xml' }))
     @express.use '/wechat', wechat('james_is_god', (req, res, next) ->
-        message = req.weixin
-        res.reply 'hehe'
+        console.log req
+        content = req.weixin
+        user = new User 1001, name: 'Sample User'
+        message = new TextMessage user, content, 'MSG-001'
+        message.res = res
+        @robot.receive message
+        #res.reply 'hehe'
     )
 
     @express.listen @settings.port
