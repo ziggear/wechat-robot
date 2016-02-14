@@ -69,11 +69,14 @@ class Wechat extends Adapter
         robot.receive message
 
 
-        setTimeout ( () ->
+        t = setTimeout ( () ->
             if message.sent is false
                 # console.log 'not sent'
                 message = new TextMessage user, 'timeout', req.weixin['MsgId']
                 robot.receive 
+            else
+                # message sent
+                clearTimeout t
         ), 5000
 
     )
