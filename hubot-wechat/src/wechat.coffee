@@ -87,6 +87,7 @@ class Wechat extends Adapter
     @express.use '/wechat', wechat('james_is_god', (req, res, next) ->
         message = req.weixin
         res.reply 'hehe'
+    )
 
     @express.listen @settings.port
 
