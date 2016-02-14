@@ -84,10 +84,9 @@ class Wechat extends Adapter
 
     @express = Express()
     # @express.use(bodyParser.urlencoded({ extended: false, type: 'text/xml' }))
-    @express.use('/wechat', wechat('james_is_god', function (req, res, next) {
+    @express.use '/wechat', wechat('james_is_god', (req, res, next) ->
         message = req.weixin
         res.reply 'hehe'
-    } 
 
     @express.listen @settings.port
 
