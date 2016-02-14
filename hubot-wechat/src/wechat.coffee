@@ -68,9 +68,9 @@ class Wechat extends Adapter
         message.sent = false
         robot.receive message
 
-        setTimeout (() ->
+        timeout_ctrl = () ->
             console.log 'hello'
-        3000)
+        setTimeout (timeout_ctrl, 3000)
 
     )
 
