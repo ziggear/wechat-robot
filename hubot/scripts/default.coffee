@@ -15,8 +15,17 @@ noMeaning = ['啊', '呢', '呀', '哇', '啦']
 hahaWords = ['嗯嗯', '就是就是', '哈哈', '嘿嘿', '是吗', '喔']
 
 module.exports = (robot) ->
-	robot.hear /^timeout$/i, (res) ->
-		res.send "抱歉我现在不会回答，可能明天就会了哟"
+	robot.hear /^(hi|hello|你好|好啊|你好啊)$/i, (res) ->
+		res.send "好！"
+
+	robot.hear /^你妹$/i, (res) ->
+		res.send "你弟"
+
+	robot.hear /^(好吧|好啊|好了)$/i, (res) ->
+	    res.send "那就好"
+
+	robot.hear /^(哈哈|哈哈哈|哈哈哈哈|哈哈哈哈哈|哈哈哈哈哈哈)$/i, (res) ->
+		res.send "妈的智障"
 
 	robot.hear /^喊爹$/i, (res) ->
 		res.send "爹"
@@ -24,7 +33,7 @@ module.exports = (robot) ->
 	robot.hear /^章颢([在吗]*)$/i, (res) ->
 		res.send "你找我爹做什么"
 
-	robot.hear /叫爸爸|([你]*)爸爸是谁/i, (res) ->
+	robot.hear /^(叫爸爸|([你]*)爸爸是谁|爸爸)$/i, (res) ->
 		res.send "我爸爸是ziggear"
 
 	robot.hear /([你是|你算|算|这是]*)人工智能(吗|呢)/i, (res) ->

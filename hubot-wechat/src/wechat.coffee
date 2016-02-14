@@ -51,37 +51,25 @@ class Wechat extends Adapter
     @validate()
 
     # start up test
-    user = new User 1001, name: 'Sample User'
+    # user = new User 1001, name: 'Sample User'
     # message = new TextMessage user, 'test', 'MSG-001'
     # @robot.receive message
 
-    @express = Express()
-    # @express.use(bodyParser.urlencoded({ extended: false, type: 'text/xml' }))
-
     robot = @robot
+    @express = Express()
     @express.use '/wechat', wechat('james_is_god', (req, res, next) ->
-        # console.log req
-        # content = req.weixin
         user = new User 1001, name: req.weixin['FromUserName']
         message = new TextMessage user, req.weixin['Content'], req.weixin['MsgId']
         message.extra_res = res
         message.sent = false
         robot.receive message
 
-
         t = setTimeout ( () ->
             if message.sent is false
-                # console.log 'not sent'
-                # message = new TextMessage user, 'timeout', req.weixin['MsgId']
-                # message.extra_res = res
-                # message.sent = false
-                # robot.receive message
                 res.reply "抱歉我现在不会回答，可能明天就会了哟"
             else
-                # message sent
                 clearTimeout t
         ), 2500
-
     )
 
     @express.listen @settings.port
