@@ -70,7 +70,7 @@ class Wechat extends Adapter
 
         timeout_ctrl = () ->
             console.log 'hello'
-        setTimeout (timeout_ctrl, 3000)
+        setTimeout timeout_ctrl 3000
 
     )
 
