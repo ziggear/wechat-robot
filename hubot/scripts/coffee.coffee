@@ -16,7 +16,22 @@ coffeeBeans = [
 				'说道咖啡豆，就必须提一下咖啡带吧'
 ]
 
+starBucks = [
+				'是最好的连锁咖啡店了吧，没有之一',
+				'全世界哪一家星巴克的品质都很稳定，给人一种安全感',
+				'星巴克的咖啡“喝起来像那么回事”，是因为烘焙都偏重啊'
+]
+
 module.exports = (robot) ->
+	robot.hear /^咖啡$/i, (res) ->
+	    res.send '我有收录咖啡知识哦，不怕你考我'
+
+	robot.hear /^星巴克$/i, (res) ->
+		res.send (res.random starBucks)
+
+	robot.hear /^阿拉比卡$/i, (res) ->
+		res.send '一种咖啡豆啊'
+
 	robot.hear /什么咖啡好喝|咖啡馆|都有哪些咖啡馆呢/i, (res) ->
 		res.send (res.random coffeeShops)
 
