@@ -1,0 +1,27 @@
+{
+  "name": "hubot-wechat",
+  "version": "1.0.0",
+  "description": "a hubot adapater for wechat",
+  "main": "src/wechat.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ziggear",
+  "license": "ISC",
+
+  "dependencies": {
+    "parent-require": "^1.0.0",
+    "express": "4.13.x",
+    "body-parser": "1.15.x",
+    "xmlbuilder": "4.2.x",
+    "xml2js": "*"
+  },
+
+  "peerDependencies": {
+	  "hubot": ">=2.0"
+  },
+
+  "devDependencies": {
+    "coffee-script": ">=1.2.0"
+  }
+}

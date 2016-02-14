@@ -1,0 +1,13 @@
+#!/bin/bash
+# link adapter
+
+cd hubot
+sudo npm link ../hubot-wechat
+
+# start hubot
+
+nohup bin/hubot -a wechat &
+
+# send test code
+
+curl -X POST -d '<xml><ToUserName><![CDATA[ziggear]]></ToUserName><FromUserName><![CDATA[12321]]></FromUserName><CreateTime>1348831860</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[test]]></Content><MsgId>1234567890123456</MsgId></xml>' http://127.0.0.1:2000/wechat/
