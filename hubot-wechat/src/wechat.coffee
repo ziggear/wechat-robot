@@ -6,6 +6,7 @@ Express     = require 'express'
 bodyParser  = require 'body-parser'
 XmlBuilder  = require 'xmlbuilder'
 {parseString} = require 'xml2js'
+wechat      = require 'wechat'
 
 try
   {Robot,Adapter,TextMessage,User} = require 'hubot'
@@ -82,53 +83,11 @@ class Wechat extends Adapter
     # @robot.receive message
 
     @express = Express()
-    @express.use(bodyParser.urlencoded({ extended: false, type: 'text/xml' }))
-
-    # validate by wechat
-    @express.get @settings.path, (req, res) =>
-        @robot.logger.info "Receive Get"
-
-        parsed = Url.parse req.url, true
-        signature = parsed['query']['signature']
-        timestamp = parsed['query']['timestamp']
-        nonce     = parsed['query']['nonce']
-        echostr   = parsed['query']['echostr']
-        token     = 'james_is_god'
-
-        shasum = Crypto.createHash 'sha1'
-        shasum.update [token, timestamp, nonce].sort().join('')
-        expected = shasum.digest('hex')
-
-        if signature is expected
-            res.end echostr
-        else
-            res.end ''
-
-    # receive wechat info
-    @express.post @settings.path, (req, res) =>
-        type = null
-        from = null
-        to = null
-        timestamp = null
-        text_content = ''
-        req.setEncoding 'utf8'
-        robot = @robot
-        # parse raw xml from bodyParser
-        xml_body = null
-        # console.log req.body
-        for key of req.body
-            xml_body = key
-        
-        parseString xml_body, (err, result) ->
-            # console.dir result
-            from = result['xml']['FromUserName'].toString()
-            text_content = result['xml']['Content']
-            to = result['xml']['MsgId']
-        # console.log from + ", " + content
-        user = new User 1001, name: from
-        message = new TextMessage(user, text_content.toString(), to.toString())
-        message.extra = res
-        @robot.receive message    
+    # @express.use(bodyParser.urlencoded({ extended: false, type: 'text/xml' }))
+    @express.use('/wechat', wechat('james_is_god', function (req, res, next) {
+        message = req.weixin
+        res.reply 'hehe'
+    } 
 
     @express.listen @settings.port
 
