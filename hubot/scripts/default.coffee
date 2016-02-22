@@ -30,6 +30,9 @@ module.exports = (robot) ->
 	robot.hear /^喊爹$/i, (res) ->
 		res.send "爹"
 
+	robot.hear /^你是不是傻$/i, (res) ->
+		res.send "调戏一个机器人，你才傻"
+
 	robot.hear /^章颢([在吗]*)$/i, (res) ->
 		res.send "你找我爹做什么"
 
@@ -87,6 +90,24 @@ module.exports = (robot) ->
 
 	robot.hear /^你从哪里来$/i, (res) ->
 	    res.send 'M78星云还是泰伯坦星球呢？让我想想'
+
+	robot.hear /^为啥啊$/i, (res) ->
+		res.send '不为啥'
+
+	robot.hear /^你爹呢$/i, (res) ->
+		res.send '在忙呢'
+
+	robot.hear /^你爹在干嘛呢$/i, (res) ->
+		res.send '他忙死了就是整天不知道自己在干嘛'
+
+	robot.hear /^忙(什么|啥呢)$/i, (res) ->
+		res.send '你自己问他去'
+
+	robot.hear /^想你妈妈不$/i, (res) ->
+		res.send '想，55555'
+
+	robot.hear /^加班([啊]*)$/i, (res) ->
+		res.send '好孩纸'
 
 
 		
