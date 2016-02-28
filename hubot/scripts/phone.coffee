@@ -2,9 +2,12 @@
 
 module.exports = (robot) ->
 	robot.hear /^(加利大厦)$/i, (res) ->
+		res.send '要去加利大厦，请回复“打车”，要找加利大厦地址，请回复“加利大厦地址”'
+
+	robot.hear /^(加利大厦地址)$/i, (res) ->
 		res.send '北京市朝阳区大屯街道北苑路180号，邮编是 100101'
 
-	robot.hear /^(加利大厦物业|物业电话)$/i, (res) ->
+	robot.hear /^(加利大厦物业|物业电话|物业)$/i, (res) ->
 		res.send '加利大厦物业 64973975, 维修部 64973811, 马桶堵了打维修部电话'
 
 	robot.hear /^寄快递$/i, (res) ->
