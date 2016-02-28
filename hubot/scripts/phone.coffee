@@ -16,6 +16,12 @@ module.exports = (robot) ->
 	robot.hear /^(快递小哥)$/i, (res) ->
 		res.send '顺丰小哥：15801676322，圆通小哥：13370113055，都是加利大厦的配送员'
 
+	robot.hear /^(公司电话)$/i, (res) ->
+		res.send '固定电话：010-84992811，400电话：4008758800，不过我得先告诉你，一般是没人接的'
+
+	robot.hear /^(公司官网)$/i, (res) ->
+		res.send 'joymason.cn 官网都记不住，还想要敬业符？？'
+
 	robot.hear /^(没水了)$/i, (res) ->
 		res.send '找人送水呀，请回复“送水电话”'
 

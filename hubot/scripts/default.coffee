@@ -121,6 +121,9 @@ module.exports = (robot) ->
 	robot.hear /^你爹呢$/i, (res) ->
 		res.send '在忙呢'
 
+	robot.hear /^我美吗$/i, (res) ->
+		res.send '🐷😷'
+
 	robot.hear /^你爹在干嘛呢$/i, (res) ->
 		res.send '他忙死了就是整天不知道自己在干嘛'
 
@@ -138,7 +141,7 @@ module.exports = (robot) ->
 
 	robot.hear /^吃汤圆$/i, (res) ->
 		res.send '啥？今天是元宵节？'
-		
+
 
 
 		
