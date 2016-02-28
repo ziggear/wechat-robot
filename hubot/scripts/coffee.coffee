@@ -28,8 +28,17 @@ starBucks = [
 	'星巴克的咖啡“喝起来像那么回事”，是因为烘焙都偏重啊'
 ]
 
+latte = [
+	'拿铁实际上是不甜的，因为标准的拿铁不带糖',
+	'往浓缩咖啡里面冲入打好的奶泡，就是拿铁啊',
+	'Flat White 和拿铁很像的，但是James觉得真的没拿铁好喝啦'
+]
+
 module.exports = (robot) ->
 	robot.hear /^咖啡$/i, (res) ->
+		res.send '是想让我给你订咖啡？那回复“我要喝咖啡”就行。回复“咖啡介绍”，偷偷告诉你一些咖啡知识'
+
+	robot.hear /^咖啡介绍$/i, (res) ->
 	    res.send (res.random coffeeHello)
 
 	robot.hear /^星巴克$/i, (res) ->
@@ -43,3 +52,6 @@ module.exports = (robot) ->
 
 	robot.hear /咖啡豆|什么咖啡豆比较好/i, (res) ->
 		res.send (res.random coffeeBeans)
+
+	robot.hear /^(拿铁|拿铁咖啡)$/i, (res) ->
+		res.send (res.random latte)
