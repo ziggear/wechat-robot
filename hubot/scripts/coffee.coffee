@@ -29,9 +29,9 @@ starBucks = [
 ]
 
 latte = [
+	'有人说拿铁不算咖啡，因为奶太多啦——反正我是不同意',
 	'拿铁实际上是不甜的，因为标准的拿铁不带糖',
-	'往浓缩咖啡里面冲入打好的奶泡，就是拿铁啊',
-	'Flat White 和拿铁很像的，但是James觉得真的没拿铁好喝啦'
+	'往浓缩咖啡里面冲入打好的奶泡，就是拿铁啊'
 ]
 
 module.exports = (robot) ->
@@ -55,3 +55,10 @@ module.exports = (robot) ->
 
 	robot.hear /^(拿铁|拿铁咖啡)$/i, (res) ->
 		res.send (res.random latte)
+
+	robot.hear /^(Flat white|馥芮白)$/i, (res) ->
+		res.send 'Flat White 和拿铁很像的，但是James觉得真的没拿铁好喝啦'
+
+	robot.hear /^摩卡$/i, (res) ->
+		res.send '你想知道摩卡咖啡、摩卡壶还是摩卡豆呢？'
+
