@@ -76,8 +76,26 @@ module.exports = (robot) ->
 	robot.hear /^什么$/i, (res) ->
 		res.send "没什么"
 
+	robot.hear /^你妈是谁$/i, (res) ->
+		res.send "是小混蛋"
+
+	robot.hear /^你妈妈好不$/i, (res) ->
+		res.send "可笨了碗都不会洗"
+
+	robot.hear /我没有问你问题呀/i, (res) ->
+		res.send "那你有何贵干呢"
+
+	robot.hear /有女盆友/i, (res) ->
+		res.send "不不不，我是单身狗"
+
 	robot.hear /^是吗$/i, (res) ->
 		res.send "是的呢"
+
+	robot.hear /^在么$/i, (res) ->
+		res.send "在啊~ 啥事"
+
+	robot.hear /^喵$/i, (res) ->
+		res.send "不许卖萌 ╭(╯^╰)╮"
 
 	robot.hear /^好了$/i, (res) ->
 		res.send (res.random hahaWords) + "，好了就好"
