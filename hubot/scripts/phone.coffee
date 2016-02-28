@@ -16,7 +16,10 @@ module.exports = (robot) ->
 	robot.hear /^(快递小哥)$/i, (res) ->
 		res.send '顺丰小哥：15801676322，圆通小哥：13370113055，都是加利大厦的配送员'
 
-	robot.hear /^(送水电话)$/i, (res) ->
+	robot.hear /^(没水了)$/i, (res) ->
+		res.send '找人送水呀，请回复“送水电话”'
+
+	robot.hear /^(送水|送水电话)$/i, (res) ->
 		res.send '送水电话是 010-64890337'
 
 	robot.hear /^(马桶|洗手池)([也]*)堵了$/i, (res) ->
@@ -27,3 +30,6 @@ module.exports = (robot) ->
 
 	robot.hear /^(我要打车|我要喝咖啡)$/i, (res) ->
 		res.send '不如在致悦下个单吧'
+
+	robot.hear /^wifi信号(差|弱)$/i, (res) ->
+		res.send '要把2.4G和5G的信号都设置成相同ssid和密码，这样iPhone和mac会自动识别当前位置信号最好的那个频段，实际上也算是增加了覆盖率'
