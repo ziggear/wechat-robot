@@ -21,6 +21,15 @@ module.exports = (robot) ->
 	robot.hear /^你妹$/i, (res) ->
 		res.send "你弟"
 
+	robot.hear /^james$/i, (res) ->
+		res.send "在啊在啊我在啊"
+
+	robot.hear /在下班路上/i, (res) ->
+		res.send "堵车吗？"
+
+	robot.hear /^哼$/i, (res) ->
+		res.send "哟，老妹儿还挺傲娇？"
+
 	robot.hear /^我不开心$/i, (res) ->
 		res.send "想听个笑话吗？你可以回复“讲笑话”"
 

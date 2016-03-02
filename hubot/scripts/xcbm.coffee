@@ -22,3 +22,6 @@ module.exports = (robot) ->
 
 	robot.hear /^一清二白$/i, (res) ->
 		res.send "——就是小葱拌面"
+
+	robot.hear /^致亲爱的读者$/i, (res) ->
+		res.send "最近你有没有很想我？"
