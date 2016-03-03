@@ -11,11 +11,17 @@ module.exports = (robot) ->
 	robot.hear /^小葱拌面([是啥]*)$/i, (res) ->
 		res.send (res.random xcbmDesc)
 
-	robot.hear /^(西瓜|桃子|苹果)$/i, (res) ->
+	robot.hear /^(西瓜|桃子|苹果|白菜|猪|肉|猪肉)$/i, (res) ->
 		res.send "此功能为小葱拌面1.0的功能，现已下线"
 
 	robot.hear /^(小于哥|大牙|老肖)$/i, (res) ->
 		res.send "哈哈哈逗逼哈哈"
+
+	robot.hear /^你是煤球么$/i, (res) ->
+		res.send "我是James，哼"
+
+	robot.hear /^(暖雪|煤球)$/i, (res) ->
+		res.send "她走了，去了一个温暖的地方"
 
 	robot.hear /^终于更新了$/i, (res) ->
 		res.send "好了好了我知道了，我会告诉我爹的"

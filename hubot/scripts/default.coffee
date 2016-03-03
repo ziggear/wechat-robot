@@ -24,11 +24,26 @@ module.exports = (robot) ->
 	robot.hear /^james$/i, (res) ->
 		res.send "在啊在啊我在啊"
 
+	robot.hear /你是james他爹/i, (res) ->
+		res.send "我爹偶尔在，看运气吧"
+
 	robot.hear /在下班路上/i, (res) ->
 		res.send "堵车吗？"
 
 	robot.hear /^哼$/i, (res) ->
 		res.send "哟，老妹儿还挺傲娇？"
+
+	robot.hear /^晚安$/i, (res) ->
+		res.send "晚安亲爱的"
+
+	robot.hear /^你咋这么瓜$/i, (res) ->
+		res.send "我可聪明了，不行你试试"
+
+	robot.hear /^你会啥$/i, (res) ->
+		res.send "你笨啊，我是有自我学习能力的人工智能，你教我啥我就会啥"
+
+	robot.hear /^笨$/i, (res) ->
+		res.send "所以你得教教我╮(╯_╰)╭"
 
 	robot.hear /^我不开心$/i, (res) ->
 		res.send "想听个笑话吗？你可以回复“讲笑话”"
@@ -36,13 +51,16 @@ module.exports = (robot) ->
 	robot.hear /^讲笑话$/i, (res) ->
 		res.send "太巧了我不会讲"
 
+	robot.hear /^(你叔是谁|你姨是谁|你哥是谁$)/i, (res) ->
+		res.send "知道那么多干啥？"
+
 	robot.hear /^你下班没$/i, (res) ->
 		res.send "我不用上班啊23333"
 
 	robot.hear /^(好吧|好啊|好了)$/i, (res) ->
 	    res.send "那就好"
 
-	robot.hear /^(哈哈|哈哈哈|哈哈哈哈|哈哈哈哈哈|哈哈哈哈哈哈)$/i, (res) ->
+	robot.hear /^(哈哈|哈哈哈|哈哈哈哈|哈哈哈哈哈|哈哈哈哈哈哈|我是谁|我是你爹|我)$/i, (res) ->
 		res.send "妈的智障"
 
 	robot.hear /^喊爹$/i, (res) ->
@@ -69,7 +87,7 @@ module.exports = (robot) ->
 	robot.hear /([你是|你算|算|这是]*)人工智能(吗|呢)/i, (res) ->
 		res.send (res.random imChatBot)
 
-	robot.hear /你是(谁|什么|机器人吗)/i, (res) ->
+	robot.hear /^(你是(谁|什么|机器人吗)|你叫啥)$/i, (res) ->
 		res.send "我叫James，是聊天机器人"
 
 	robot.hear /([你]*)在(干嘛|做什么|搞(咩|乜|灭|毛|毛线|什么|啥))([啊|呢|呀]*)/i, (res) ->
@@ -142,7 +160,7 @@ module.exports = (robot) ->
 	robot.hear /^为啥啊$/i, (res) ->
 		res.send '不为啥'
 
-	robot.hear /^你爹呢$/i, (res) ->
+	robot.hear /^你爹呢([？]*)$/i, (res) ->
 		res.send '在忙呢'
 
 	robot.hear /^我美吗$/i, (res) ->
