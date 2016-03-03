@@ -39,7 +39,7 @@ module.exports = (robot) ->
 	robot.hear /^你咋这么瓜$/i, (res) ->
 		res.send "我可聪明了，不行你试试"
 
-	robot.hear /^你会啥$/i, (res) ->
+	robot.hear /^你会啥|那你会啥？$/i, (res) ->
 		res.send "你笨啊，我是有自我学习能力的人工智能，你教我啥我就会啥"
 
 	robot.hear /^笨$/i, (res) ->
@@ -75,7 +75,7 @@ module.exports = (robot) ->
 	robot.hear /^你叫什么$/i, (res) ->
 		res.send "我叫给你看"
 
-	robot.hear /^擦$/i, (res) ->
+	robot.hear /^擦|靠$/i, (res) ->
 		res.send "这是语气词还是动词？"
 
 	robot.hear /^章颢([在吗]*)$/i, (res) ->
@@ -163,7 +163,10 @@ module.exports = (robot) ->
 	robot.hear /^你爹呢([？]*)$/i, (res) ->
 		res.send '在忙呢'
 
-	robot.hear /^我美吗$/i, (res) ->
+	robot.hear /^疯了$/i, (res) ->
+		res.send '那就嗨起来(｡･∀･)ﾉﾞ'
+
+	robot.hear /^我美吗|哦$/i, (res) ->
 		res.send '🐷😷'
 
 	robot.hear /^你爹在干嘛呢$/i, (res) ->
